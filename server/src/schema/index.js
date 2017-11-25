@@ -3,7 +3,6 @@ import { makeExecutableSchema } from 'graphql-tools';
 import gql from 'graphql-tag';
 import resolvers from './resolvers';
 
-// Define your types here.
 const typeDefs = gql`
   type Post {
     id: ID!
@@ -13,6 +12,16 @@ const typeDefs = gql`
 
   type Query {
     allPosts(userId: ID!): [Post!]!
+  }
+
+  type Mutation {
+    createUpdatePost(userId: ID!, post: NewPost!): Post
+  }
+
+  input NewPost {
+    title: String!
+    body: String!
+    id: ID
   }
 `;
 

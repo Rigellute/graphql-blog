@@ -17,5 +17,6 @@ app.use(
 );
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`GraphQL server running on port ${PORT}.`);
 });
