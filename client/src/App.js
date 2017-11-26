@@ -1,8 +1,13 @@
+// @flow
 import React, { Component } from 'react';
 import { Jumbotron, Header } from './App.styles.js';
-import { getPosts } from './App.graphql';
+import { getPosts } from './graphql/get-posts';
 
-class App extends Component {
+type Props = {
+  allPosts: Array<T$PostType>
+};
+
+class App extends Component<Props> {
   render() {
     return (
       <div>
@@ -18,6 +23,9 @@ class App extends Component {
             <input className="button-primary" type="submit" value="Send" />
           </fieldset>
         </form>
+        <div>
+          {(this.props.allPosts).map(post => <div key={post.id}>{post.title}</div>)}
+        </div>
       </div>
     );
   }
