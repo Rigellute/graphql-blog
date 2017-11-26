@@ -1,9 +1,8 @@
 ## GraphQL blog
-Use node > 8
-npm > 5
+Use node > 8 and npm > 5
 
 ### Setup
-1. Clone the repo
+1. Clone the repo and `cd` to it.
 2. In one terminal tab `cd client && npm install && npm run start`.
 3. In another tab `cd server && npm install && npm run start`.
 
@@ -15,4 +14,5 @@ npm > 5
 
 *Front end*
 1. Add react router and route to individual blogs.
-2. Backend is set up to deal with create or update posts, but front end only currently handles create.
+2. Implement update of post.
+   * Backend is set up to deal with create or update posts, but front end only currently handles create.

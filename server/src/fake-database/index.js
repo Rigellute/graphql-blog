@@ -25,7 +25,7 @@ export default class FakeDB {
         {
           id: 1,
           title: 'Things I like to do',
-          body: 'Code, play the guitar and piano, more coding',
+          body: 'Code, play the guitar and piano, more coding.',
         },
       ],
     });
