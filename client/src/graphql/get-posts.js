@@ -16,8 +16,10 @@ export type Response = {
   allPosts: Array<T$PostType>,
 }
 
-export const getPosts: OperationComponent<Response> = graphql(GET_POSTS, ({
+const getPosts: OperationComponent<Response> = graphql(GET_POSTS, ({
   props: ({data: { allPosts = [] }}) => ({
     allPosts
   })
-}))
+}));
+
+export default getPosts;

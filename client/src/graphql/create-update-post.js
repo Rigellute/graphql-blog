@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const CREATE_UPDATE_POST = gql`
-  mutation createUpdatePost(post: Post!) {
+  mutation createUpdatePost($post: Post!) {
     createUpdatePost(userId: 1, post: $post) {
       id
       title
@@ -12,7 +12,7 @@ const CREATE_UPDATE_POST = gql`
   }
 `;
 
-export const createUpdatePost = graphql(CREATE_UPDATE_POST, ({
+const createUpdatePost = graphql(CREATE_UPDATE_POST, ({
   name: 'createUpdatePost',
   props: ownProps => ({
     ...ownProps,
@@ -22,4 +22,6 @@ export const createUpdatePost = graphql(CREATE_UPDATE_POST, ({
       }
     })
   })
-}))
+}));
+
+export default createUpdatePost;
