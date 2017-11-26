@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/",
-    "start-dev": "nodemon --exec babel-node src/index",
+    "start": "nodemon --exec babel-node src/index",
     "build": "babel src --out-dir build --presets node8",
-    "start": "node build/index",
+    "start-prod": "node build/index",
     "flow": "flow"
   },
   "author": "Alexander Keliris",

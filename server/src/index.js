@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import cors from 'cors';
 import schema from './schema';
 import { PORT, DATA_PATH } from './config';
 import FakeDB from './fake-database';
@@ -11,6 +12,9 @@ import FakeDB from './fake-database';
   await fakeDB.initialize();
 
   const app = express();
+
+  app.use(cors());
+
   app.use(
     '/graphql',
     bodyParser.json(),
