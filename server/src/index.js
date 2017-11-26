@@ -3,20 +3,29 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import schema from './schema';
+import { PORT, DATA_PATH } from './config';
+import FakeDB from './fake-database';
 
-const PORT = 3000;
+(async function startServer() {
+  const fakeDB = new FakeDB(DATA_PATH);
+  await fakeDB.initialize();
 
-const app = express();
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+  const app = express();
+  app.use(
+    '/graphql',
+    bodyParser.json(),
+    graphqlExpress({ schema, context: { fakeDB } })
+  );
 
-app.use(
-  '/graphiql',
-  graphiqlExpress({
-    endpointURL: '/graphql',
-  })
-);
+  app.use(
+    '/graphiql',
+    graphiqlExpress({
+      endpointURL: '/graphql',
+    })
+  );
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`GraphQL server running on port ${PORT}.`);
-});
+  app.listen(PORT, () => {
+    // eslint-disable-next-line no-console
+    console.log(`GraphQL server running on port ${PORT}.`);
+  });
+})();

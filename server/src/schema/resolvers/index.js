@@ -1,21 +1,22 @@
 // @flow
 export default {
   Query: {
-    async allPosts(root: void, { userId }: { userId: string }) {
-      console.log(userId);
-      return [{ id: 1, title: 'hello', body: 'world' }];
+    async allPosts(
+      root: void,
+      { userId }: { userId: string },
+      { fakeDB }: { fakeDB: T$FakeDB }
+    ) {
+      const user = await fakeDB.getUser(userId);
+      return user.posts || [];
     },
   },
   Mutation: {
     async createUpdatePost(
       root: void,
-      { userId, post }: { userId: string, post: T$PostType }
+      { userId, post }: { userId: string, post: T$PostType },
+      { fakeDB }: { fakeDB: T$FakeDB }
     ) {
-      console.log(userId);
-      return {
-        ...post,
-        id: 23,
-      };
+      return fakeDB.savePost(userId, post);
     },
   },
 };
