@@ -24,8 +24,8 @@ export default class FakeDB {
       posts: [
         {
           id: 1,
-          title: 'Favourite food',
-          body: 'Pizza',
+          title: 'Things I like to do',
+          body: 'Code, play the guitar and piano, more coding',
         },
       ],
     });

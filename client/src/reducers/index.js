@@ -1,11 +1,12 @@
+// @flow
 import { combineReducers } from 'redux';
 
 const DEFAULT_STATE = {
   activePost: {
     body: '',
     title: '',
-  }
-}
+  },
+};
 
 const blog = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
@@ -19,12 +20,12 @@ const blog = (state = DEFAULT_STATE, action) => {
         },
       };
     default:
-      return state
+      return state;
   }
-}
+};
 
 const blogApp = combineReducers({
   blog,
-})
+});
 
-export default blogApp
+export default blogApp;

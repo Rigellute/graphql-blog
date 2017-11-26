@@ -7,7 +7,11 @@ export default {
       { fakeDB }: { fakeDB: T$FakeDB }
     ) {
       const user = await fakeDB.getUser(userId);
-      return user.posts || [];
+      return (
+        [...user.posts].sort(
+          (a, b) => (Number(a.id) < Number(b.id) ? 1 : -1)
+        ) || []
+      );
     },
   },
   Mutation: {

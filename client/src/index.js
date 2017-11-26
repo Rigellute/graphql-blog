@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient } from 'apollo-client';
@@ -14,7 +15,7 @@ import blogApp from './reducers';
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: 'http://localhost:9000/graphql' }),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 const store = createStore(blogApp);
