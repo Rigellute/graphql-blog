@@ -5,8 +5,8 @@ type Props = {
     title: string,
     body: string,
   },
-  onUpdateTitle: (e: Event) => void,
-  onUpdateBody: (e: Event) => void,
+  onUpdateTitle: (e: SyntheticInputEvent<*>) => void,
+  onUpdateBody: (e: SyntheticInputEvent<*>) => void,
   onSubmit: (e: Event) => Promise<void>,
 };
 

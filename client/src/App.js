@@ -47,7 +47,7 @@ class App extends Component<Props> {
     }
   };
 
-  handleFormUpdate = (prop: 'title' | 'body') => (event: Event) =>
+  handleFormUpdate = (prop: 'title' | 'body') => (event: SyntheticInputEvent<*>) =>
     this.props.onUpdateField({ prop, text: event.target.value });
 
   render() {

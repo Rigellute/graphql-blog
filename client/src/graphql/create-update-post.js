@@ -14,6 +14,7 @@ const CREATE_UPDATE_POST = gql`
 
 const createUpdatePost = graphql(CREATE_UPDATE_POST, {
   name: 'createUpdatePost',
+  // $FlowFixMe - these props should be inferred by flow from apollo
   props: ({ ownProps, createUpdatePost }) => ({
     ...ownProps,
     createUpdatePost: (post: T$PostType) =>
