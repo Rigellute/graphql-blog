@@ -95,6 +95,7 @@ export default class FakeDB {
 
       return JSON.parse(data);
     } catch (e) {
+      // The file is not found
       if (e.code === 'ENOENT') {
         const data = await this.seedData();
         return data;

@@ -15,10 +15,10 @@ import FakeDB from './fake-database';
 
   app.use(cors());
 
-  app.use(
-    '/graphql',
-    bodyParser.json(),
-    graphqlExpress({ schema, context: { fakeDB } })
+  app.use();
+
+  app.use('/graphql', bodyParser.json(), req =>
+    graphqlExpress({ schema, context: { fakeDB, req } })
   );
 
   app.use(

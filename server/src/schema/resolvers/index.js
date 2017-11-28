@@ -1,4 +1,6 @@
 // @flow
+import jwt from 'jsonwebtoken';
+
 export default {
   Query: {
     async allPosts(
@@ -18,9 +20,32 @@ export default {
     async createUpdatePost(
       root: void,
       { userId, post }: { userId: string, post: T$PostType },
-      { fakeDB }: { fakeDB: T$FakeDB }
+      { fakeDB, req }: { fakeDB: T$FakeDB }
     ) {
+      console.log(Object.keys(req));
       return fakeDB.savePost(userId, post);
+    },
+    async login(root, { email, password }, { fakeDB }: { fakeDB: T$FakeDB }) {
+      const hashPassword = pass => `${pass}#`;
+
+      const data = await fakeDB.readDataFromFile();
+
+      const user = data.find(
+        usr => usr.password === hashPassword(password) && usr.email === email
+      );
+
+      if (!user) {
+        throw new Error('No User found');
+      }
+
+      const token = jwt.sign(
+        {
+          userId: user.id,
+        },
+        'hello'
+      );
+
+      return token;
     },
   },
 };

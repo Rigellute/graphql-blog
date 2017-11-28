@@ -16,6 +16,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUpdatePost(userId: ID!, post: NewPost!): Post
+    login(email: String!, password: String!): String
   }
 
   input NewPost {
